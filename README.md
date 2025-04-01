@@ -1,1 +1,1 @@
-# enterprise-class_application_classess
+# Technologies for enterprise-class applications
