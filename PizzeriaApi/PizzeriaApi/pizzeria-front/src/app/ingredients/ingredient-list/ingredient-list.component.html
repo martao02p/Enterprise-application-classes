@@ -1,0 +1,28 @@
+<div class="box">
+    <h2>List of ingredients</h2>
+
+    <button mat-raised-button class="pizza pizza-orange" (click)="add()">
+        Add
+    </button>
+
+
+    <div *ngIf="loading">Loading..</div>
+    <div *ngIf="errorMsg" class="error">{{ errorMsg }}</div>
+
+    <h3>Solid pizza ingredients</h3>
+    <ul class="list">
+    <li *ngFor="let ing of systemIngredients">
+        {{ ing.name }}
+    </li>
+    </ul>
+
+    <h3>Other pizza ingredients</h3>
+    <ul class="list">
+    <li *ngFor="let ing of editableIngredients">
+        {{ ing.name }}
+
+        <button mat-button (click)="rename(ing)">Change name</button>
+        <button mat-button color="warn" (click)="delete(ing)">Delete</button>
+    </li>
+    </ul>
+</div>

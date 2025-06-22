@@ -1,0 +1,93 @@
+<div class="modal-content">
+  <h2>Add new pizza</h2>
+
+  <div>
+    <strong>Choose template:</strong>
+    <div class="templates">
+      <button
+        *ngFor="let t of templates"
+        (click)="selectTemplate(t.name, t.pizza)"
+        [ngClass]="{
+          selected: selectedTemplateName === t.name,
+          'pizza': true,
+          'pizza-red': t.name === 'Margherita',
+          'pizza-orange': t.name === 'Funghi',
+          'pizza-black': t.name === 'Pepperoni'
+        }"
+        mat-raised-button>
+        {{ t.name }}
+      </button>
+
+      <button
+        mat-raised-button
+        (click)="clearTemplate()"
+        [ngClass]="{
+          selected: selectedTemplateName === 'Custom',
+          'pizza': true,
+          'pizza-beige': true
+        }">
+        Custom
+      </button>
+    </div>
+  </div>
+
+  <form class="pizza-form" #form="ngForm">
+    <label>
+      Name:
+      <input class="input-text" [(ngModel)]="pizza.name" name="name" required #nameModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="nameModel.invalid && nameModel.touched">Name is required.</div>
+
+    <label>
+      Type of dough:
+      <select [(ngModel)]="pizza.doughType" name="dough" required #doughModel="ngModel">
+        <option value="" disabled selected>Choose your dough type</option>
+        <option value="cienkie">Thin</option>
+        <option value="grube">Thick</option>
+      </select>
+    </label>
+    <div class="error" *ngIf="doughModel.invalid && doughModel.touched">Dough type is required.</div>
+
+    <label>
+      Price size S:
+      <input class="input-text" type="number" [(ngModel)]="pizza.smallPrice" name="small" required #sModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="sModel.invalid && sModel.touched">Price for size S is required.</div>
+
+    <label>
+      Price size M:
+      <input class="input-text" type="number" [(ngModel)]="pizza.mediumPrice" name="medium" required #mModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="mModel.invalid && mModel.touched">Price for size M is required.</div>
+
+    <label>
+      Price size L:
+      <input class="input-text" type="number" [(ngModel)]="pizza.largePrice" name="large" required #lModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="lModel.invalid && lModel.touched">Price for size L is required.</div>
+
+    <div class="ingredients-block">
+      <strong>Solid pizza ingredients:</strong>
+      <ul>
+        <li *ngFor="let ingr of systemIngredients">{{ ingr.name }}</li>
+      </ul>
+    </div>
+
+    <div class="ingredients-block">
+      <strong>Additional pizza ingredients:</strong>
+      <div *ngFor="let ingr of editableIngredients" class="checkbox-line">
+        <label>
+          <input type="checkbox"
+                [checked]="isChecked(ingr)"
+                (change)="toggleIngredient(ingr)" />
+          {{ ingr.name }}
+        </label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button mat-raised-button class="pizza pizza-orange" (click)="save()" [disabled]="form.invalid">Save</button>
+      <button mat-raised-button class="pizza pizza-beige" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

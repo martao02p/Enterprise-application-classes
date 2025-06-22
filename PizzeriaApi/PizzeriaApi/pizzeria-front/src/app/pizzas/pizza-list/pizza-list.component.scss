@@ -1,0 +1,73 @@
+.pizza-page {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding: 20px;
+}
+.pizza-card {
+    padding-bottom: 10px;
+}
+
+h2 {
+  font-size: 40px;
+}
+.box-add-filter {
+    width: 40vw;
+    height: 18vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.add-pizza-btn {
+    font-family: 'Roboto Mono', monospace;
+    border: none;
+    padding: 10px 20px;
+}
+.filter-field {
+  background-color: #2c2c2c;
+  border-radius: 12px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+
+  color: white;
+  font-weight: 500;
+
+  input {
+    color: white;
+    background: transparent;
+  }
+
+  ::placeholder {
+    color: #ccc;
+  }
+
+  .mat-mdc-form-field-flex {
+    background-color: transparent;
+  }
+
+  .mat-mdc-outline {
+    color: orange;
+  }
+
+  .mdc-floating-label {
+    color: white;
+  }
+}
+
+.position-box {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

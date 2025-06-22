@@ -1,0 +1,9 @@
+<div class="box">
+  <h2>Delete pizza</h2>
+  <p>Are you sure, do you want to delete <strong>{{ data.pizza.name }}</strong>?</p>
+  <button (click)="confirm()" mat-raised-button class="pizza pizza-red">
+    Yes, delete
+  </button>
+
+    <button (click)="cancel()" mat-button class="pizza pizza-beige">No</button>
+</div>

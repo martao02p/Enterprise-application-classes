@@ -1,0 +1,57 @@
+<div class="pizza-page">
+  <div class="pizza-page-container">
+  <h2>Pizza menu</h2>
+    <div class="box-add-filter">
+      <button mat-raised-button
+        class="pizza pizza-orange add-pizza-btn"
+        (click)="openCreateModal()">
+        Add pizza
+      </button>
+
+      <mat-form-field appearance="outline" class="filter-field">
+        <mat-label>Filtr by name</mat-label>
+        <input matInput [(ngModel)]="filter" placeholder="for example Margherita" />
+      </mat-form-field>
+    </div>
+
+
+  <div *ngFor="let pizza of filteredPizzas()" class="pizza-card">
+    <div class="position-box">
+
+      <div class="pizza-position">
+        <strong>{{ pizza.name }}</strong><br />
+        Ceny: S: {{ pizza.smallPrice }} PLN, M: {{ pizza.mediumPrice }} PLN, L: {{ pizza.largePrice }} PLN
+      </div>
+      
+      <div class="actions">
+        <button mat-raised-button class="pizza pizza-beige" (click)="toggleDetails(pizza.id!)">
+          {{ isExpanded(pizza.id!) ? 'Hide' : 'Preview' }}
+        </button>
+        <button mat-raised-button class="pizza pizza-orange" (click)="openEditModal(pizza)">
+          Edit
+        </button>
+        <button mat-raised-button class="pizza pizza-black" (click)="openDeleteModal(pizza)">
+          Delete
+        </button>
+
+      </div>
+    </div>
+
+    <div *ngIf="pizza.id !== undefined && isExpanded(pizza.id)" class="details">
+      <p><strong>Type of pizza dough:</strong> {{ pizza.doughType }}</p>
+
+      <p>
+        <strong>Ingredients:</strong>
+        <span *ngIf="pizza.ingredients && pizza.ingredients.length === 0">No one</span>
+        <span *ngIf="pizza.ingredients && pizza.ingredients.length > 0">
+          <span *ngFor="let ing of pizza.ingredients; let last = last">
+            <span [ngClass]="{ 'system-ingredient': ing.isSystem }">
+              {{ ing.name }}
+            </span><span *ngIf="!last">, </span>
+          </span>
+        </span>
+      </p>
+    </div>
+  </div>
+  </div>
+</div>

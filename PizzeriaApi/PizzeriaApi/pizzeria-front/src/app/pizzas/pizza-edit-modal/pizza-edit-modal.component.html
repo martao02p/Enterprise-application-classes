@@ -1,0 +1,81 @@
+<div class="box">
+  <h2>Edit pizza</h2>
+
+  <form class="pizza-form" #form="ngForm">
+    <!-- Name -->
+    <label>
+      Name:
+      <input [(ngModel)]="pizza.name" name="name" required #nameModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="nameModel.invalid && nameModel.touched">
+      Name is required.
+    </div>
+
+    <!-- Dough type -->
+    <label>
+      Type of dough:
+      <select [(ngModel)]="pizza.doughType" name="dough" required #doughModel="ngModel">
+        <option value="" disabled selected>Choose dough type</option>
+        <option value="cienkie">Thin</option>
+        <option value="grube">Thick</option>
+      </select>
+    </label>
+    <div class="error" *ngIf="doughModel.invalid && doughModel.touched">
+      Dough type is required.
+    </div>
+
+    <!-- Prices -->
+    <label>
+      Price size S:
+      <input type="number" [(ngModel)]="pizza.smallPrice" name="small" required #sModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="sModel.invalid && sModel.touched">
+      Small price is required.
+    </div>
+
+    <label>
+      Price size M:
+      <input type="number" [(ngModel)]="pizza.mediumPrice" name="medium" required #mModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="mModel.invalid && mModel.touched">
+      Medium price is required.
+    </div>
+
+    <label>
+      Price size L:
+      <input type="number" [(ngModel)]="pizza.largePrice" name="large" required #lModel="ngModel" />
+    </label>
+    <div class="error" *ngIf="lModel.invalid && lModel.touched">
+      Large price is required.
+    </div>
+
+    <!-- Ingredients -->
+    <div class="ingredients-block">
+      <strong>Solid ingredients:</strong>
+      <ul>
+        <li *ngFor="let ingr of systemIngredients">{{ ingr.name }}</li>
+      </ul>
+    </div>
+
+    <div class="ingredients-block">
+      <strong>Additional ingredients:</strong>
+      <div class="checkbox-line" *ngFor="let ingr of editableIngredients">
+        <label>
+          <input type="checkbox"
+                 [checked]="isChecked(ingr)"
+                 (change)="toggleIngredient(ingr)" />
+          {{ ingr.name }}
+        </label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button mat-raised-button class="pizza pizza-orange" (click)="save()" [disabled]="form.invalid">
+        Save
+      </button>
+      <button mat-raised-button class="pizza pizza-black" (click)="cancel()">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>

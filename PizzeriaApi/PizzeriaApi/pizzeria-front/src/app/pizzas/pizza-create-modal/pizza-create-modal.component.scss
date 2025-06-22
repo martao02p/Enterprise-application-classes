@@ -1,0 +1,73 @@
+.modal-content {
+  background-color: #fef6e4;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.selected {
+  background-color: #1976d2;
+  color: white;
+}
+
+.pizza {
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+  font-family: 'Roboto Mono', monospace;
+}
+
+.pizza-orange {
+  background-color: #e76f51;
+}
+
+.pizza-black {
+  background-color: #2a2a2a;
+}
+
+.pizza:hover {
+  opacity: 0.9;
+}
+
+.pizza-form {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+input.input-text {
+  background-color: white;
+  color: #556b2f;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  width: 90%;
+}
+
+input.input-text:focus {
+  box-shadow: 0 0 4px #c3d69b;
+}
+
+select {
+  background-color: white;
+  color: #556b2f;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  width: 96%;
+}
+
+select:focus {
+  box-shadow: 0 0 4px #c3d69b;
+}
+
